@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Proposal</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Courier New", Courier, monospace;
+      }
+      body {
+        background: linear-gradient(
+          to top left,
+          rgb(157, 37, 18),
+          rgb(215, 39, 162)
+        );
+        color: antiquewhite;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .content {
+        background-color: rgba(240, 248, 255, 0.245);
+        width: 80vw;
+        height: 40vh;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .content h1 span,
+      .content h2 {
+        color: rgb(255, 1, 43);
+      }
+
+      #heart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        animation: mymove 3s infinite;
+      }
+
+      @keyframes mymove {
+        50% {
+          font-size: 40px;
+        }
+      }
+
+      .btn {
+        padding: 10px 30px;
+        margin-top: 20px;
+        border: 2px solid rgb(52, 51, 51);
+        border-radius: 20px;
+        background-color: rgba(240, 248, 255, 0.245);
+        font-size: 17px;
+        font-weight: 400;
+        color: antiquewhite;
+      }
+      .btn:hover {
+        background: linear-gradient(
+          to top left,
+          rgb(157, 37, 18),
+          rgb(215, 39, 162)
+        );
+        border: none;
+        transition: 0.5s ease-in-out;
+      }
+      .heading-2 {
+        display: none;
+      }
+      .heading-3 {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="content">
+      <h1 class="heading">Do You <span>Love</span> Me ?</h1>
+      <h1 class="heading-2">I <span>Love</span> You too...</h1>
+      <div class="heading-3">
+        <h1>Still</h1>
+        <h1>I <span>Love</span> You too...</h1>
+      </div>
+      <h2 id="heart">❤</h2>
+      <div class="btn-grp">
+        <button class="yes btn">Yes</button>
+        <button class="no btn">No</button>
+      </div>
+    </section>
+
+    <script>
+      let count = 1;
+      document.querySelector(".yes").addEventListener("click", function () {
+        document.querySelector(".heading").style.display = "none";
+        document.querySelector(".heading-2").style.display = "block";
+        document.querySelector("#heart").textContent = "❤";
+        document.querySelector(".btn-grp").style.display = "none";
+      });
+      document.querySelector(".no").addEventListener("click", function () {
+        if (count === 1) {
+          document.querySelector(".heading").textContent = "Plz...";
+          count++;
+        } else if (count === 2) {
+          document.querySelector(".heading").textContent = "Please...";
+          count++;
+        } else if (count === 3) {
+          document.querySelector(".heading").style.display = "none";
+
+          document.querySelector(".heading-3").style.display = "flex";
+          document.querySelector(".btn-grp").style.display = "none";
+          count = 1;
+        }
+        document.querySelector("#heart").textContent = "🥺";
+      });
+    </script>
+  </body>
+</html>
